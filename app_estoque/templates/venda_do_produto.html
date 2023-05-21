@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<hmtl>
+    <head>
+          <title>Pagina de Venda</title>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <!-- Importação do bootstrap -->
+          {% load static %}
+          <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+          <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+          <!-- Fim da importação do Bootstrap -->
+    </head>
+
+    <body>
+
+        {% include "navbar.html" %}
+        <div class="container mt-3">
+                <h1>Venda do produto</h1>
+                <form action="venda_do_produto" method="post">
+                {% csrf_token %}
+
+                    {% for i in lista_ids %}
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><b>Item {{i}}</b></span>
+                        <input class="form-control w-50" list="itens" name="item_{{i}}" id="item_{{i}}" autocomplete="off">
+                            <datalist id="itens">
+                            {% for item in itens %}
+                              <option value="[{{item.item_id}}] {{item}}">
+                            {% endfor %}
+                            </datalist>
+                        <span class="input-group-text">Quantidade</span>
+                      <input id="quantidade" class="form-control quantidade" type="number" name = "quantidade_{{i}}" value = 0 onchange="soma_total()" />
+                        <span class="input-group-text">Desconto</span>
+                      <input id="desconto" class="form-control desconto" type="number" name = "desconto_{{i}}" value = 0 />
+                    </div>
+                    {% endfor %}
+
+                    <div class="col-3 mt-3">
+                        <button type="reset" class="btn btn-secondary">Limpar</button>
+                        <button type="submit" class="btn btn-primary">Cadastrar Venda</button>
+                    </div>
+                    <!--<p><B>TOTAL: </B></p>
+                    <P id="total">0.00</P>-->
+                </form>
+        </div>
+
+<!-- CRIAR A TABELA AQUI DENTRO -->
+
+
+
+<!-- ATÉ AQUI------------------ -->
+
+
+    </body>
+
+
+</hmtl>
