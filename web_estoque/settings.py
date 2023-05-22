@@ -53,6 +53,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://producaoestoque-production.up.railway.app/'
+]
+
 ROOT_URLCONF = 'web_estoque.urls'
 
 TEMPLATES = [
