@@ -54,7 +54,7 @@ MIDDLEWARE = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://producaoestoque-production.up.railway.app/'
+    'https://producaoestoque-production.up.railway.app'
 ]
 
 ROOT_URLCONF = 'web_estoque.urls'
@@ -84,11 +84,11 @@ WSGI_APPLICATION = 'web_estoque.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django_deploy',
-        'USER': 'estoque',
-        'PASSWORD': 'univesp',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'FEZrUDgEL7rfVseMEJgn',
+        'HOST': 'containers-us-west-129.railway.app',
+        'PORT': '6154',
     }
 }
 
