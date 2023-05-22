@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import dj_database_url
 from pathlib import Path
+import environ
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -84,11 +88,11 @@ WSGI_APPLICATION = 'web_estoque.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': '${{password}}',
-        'HOST': 'containers-us-west-129.railway.app',
-        'PORT': '6154',
+        'NAME': env('NAME'),
+        'USER': env('USUARIO'),
+        'PASSWORD': env('PASSWORD'),
+        'HOST': env('HOST'),
+        'PORT': env('PORT'),
     }
 }
 
