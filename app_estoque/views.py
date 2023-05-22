@@ -160,6 +160,10 @@ def delete_item(request):
     print(request.POST)
     return tabela_ex(request)
 
+def deleta_venda(request):
+    Item_Venda.objects.filter(item_venda_id=request.POST['deletar']).delete()
+    return redirect(pagina_venda)
+
 def pagina_venda(request):
     if not request.user.is_authenticated:
         return redirect(autenticacao)
@@ -168,6 +172,7 @@ def pagina_venda(request):
     retorno['lista_ids'] = range(8)
 
     retorno['itens'] = Itens.objects.all()
+    retorno['vendas'] = Item_Venda.objects.all()
 
     print(retorno['itens'])
 
